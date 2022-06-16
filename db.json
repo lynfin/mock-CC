@@ -38,9 +38,16 @@
     {
       "title": "Another Givenchy",
       "artist": "Lonely Boy",
-      "bpm": "83",
+      "BPM": 83,
       "image": "https://cdn5.beatstars.com/eyJidWNrZXQiOiJidHMtY29udGVudCIsImtleSI6InVzZXJzL3Byb2QvMTUxMzAyMi9pbWFnZS9rODlZRzAxclh0VXkvY2djZmd4ZmcuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7ImZpdCI6ImZpbGwiLCJ3aWR0aCI6MjQwLCJoZWlnaHQiOjI0MH19fQ==?t=1638295080242",
       "id": 6
+    },
+    {
+      "title": "Yichang 2",
+      "artist": "beefy",
+      "BPM": "26",
+      "image": "https://cdn5.beatstars.com/eyJidWNrZXQiOiJidHMtY29udGVudCIsImtleSI6InVzZXJzL3Byb2QvODI0NDExL2ltYWdlL0EzRkRJQjlHQkJTRC8yMDIyMDEyOC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsiZml0IjoiZmlsbCIsIndpZHRoIjoyNDAsImhlaWdodCI6MjQwfX19?t=1643380284285",
+      "id": 7
     }
   ]
 }
