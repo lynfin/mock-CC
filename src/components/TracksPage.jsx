@@ -11,11 +11,16 @@ useEffect(()=> {
   .then(r=>r.json())
   .then(tracks=>setTracks(tracks))
 },[])
+
+const handleAddTrack = (newTrack) => {
+  setTracks([...tracks, newTrack]);
+}
     console.log(tracks)
+
   return (
     <div>
       <Search />
-      <AddTrackForm />
+      <AddTrackForm onAddTrack={handleAddTrack}/>
       <TracksList tracks={tracks}/>
     </div>
   )
