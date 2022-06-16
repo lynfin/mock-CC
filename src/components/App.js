@@ -6,7 +6,7 @@ import vinyl from "../assets/vinyl_PNG88.png";
 function App() {
   // ┌ └ ─ ├ │
   // App
-  //  └ TracksPage [tracks]
+  //  └ TracksPage [tracks, searchString]
   //      ├ Search
   //      ├ AddTrackForm
   //      └ TracksList
