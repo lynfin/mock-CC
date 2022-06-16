@@ -15,9 +15,23 @@ const handleChange = (e) => {
   //setFormData((oldData) => ({...oldData,[{name}]:{value}}))
   setFormData({...formData,[name]:value})
 }
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // save the new track to the db
+  fetch("http://localhost:8001/tracks", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(r=>r.json())
+  .then(newTrack=>console.log('Saved',newTrack))
+  // update the DOM with the new track
+}
 console.log(formData);
   return (
-      <form>
+      <form onSubmit = {handleSubmit}>
         <div>
           <input value={image} onChange={handleChange}  type="text" name="image" placeholder="Image URL"/>
           <input value={title} onChange={handleChange}  type="text" name="title" placeholder="title" />
