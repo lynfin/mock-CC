@@ -26,6 +26,10 @@ const updateSortType = (newSort) => {
 const handleAddTrack = (newTrack) => {
   setTracks([...tracks, newTrack]);
 }
+
+const handleDeleteTrack = (oldTrack) => {
+  setTracks(tracks.filter(track=>track.id!==oldTrack.id))
+}
  
     
 const filteredTracks = tracks.filter(
@@ -56,7 +60,7 @@ filteredTracks.sort(function (a,b) {return a.BPM - b.BPM})
     <div>
       <Search onUpdateSearch={updateSearchTerm} searchTerm={searchTerm}/>
       <AddTrackForm onAddTrack={handleAddTrack}/>
-      <TracksList tracks={filteredTracks} onNewSort={updateSortType}/>
+      <TracksList tracks={filteredTracks} onNewSort={updateSortType} onDeleteTrack={handleDeleteTrack}/>
     </div>
   )
 }
