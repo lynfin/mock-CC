@@ -6,7 +6,7 @@ import TracksList from './TracksList'
 function TracksPage() {
 const [tracks, setTracks] = useState([]);
 const [searchTerm, setSearchTerm] = useState("");
-// filteredTracks = [];
+
 
 useEffect(()=> {
   fetch("http://localhost:8001/tracks")
@@ -14,9 +14,6 @@ useEffect(()=> {
   .then(tracks=>setTracks(tracks))
 },[])
 
-// useEffect(() => {
-// filteredTracks = tracks.filter(track=>track.title.contains(searchTerm))
-// },[searchTerm, tracks])
 
 const updateSearchTerm = (newSearch) => {
   setSearchTerm(newSearch);
@@ -25,9 +22,10 @@ const updateSearchTerm = (newSearch) => {
 const handleAddTrack = (newTrack) => {
   setTracks([...tracks, newTrack]);
 }
-    console.log('Search',searchTerm)
-    //console.log('Filtered tracks',filteredTracks)
-const filteredTracks = tracks.filter(track=>track.title.includes(searchTerm));
+ 
+    
+const filteredTracks = tracks.filter(track=>track.title.includes(searchTerm) || track.artist.includes(searchTerm));
+
 
   return (
     <div>
