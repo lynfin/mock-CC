@@ -17,7 +17,7 @@ const handleChange = (e) => {
 }
 const handleSubmit = (e) => {
   e.preventDefault();
-  // save the new track to the db
+  // save the new track to the db and then update DOM
   fetch("http://localhost:8001/tracks", {
     method: "POST",
     headers: {
@@ -26,8 +26,8 @@ const handleSubmit = (e) => {
     body: JSON.stringify(formData)
   })
   .then(r=>r.json())
-  .then(newTrack=>console.log('Saved',newTrack))
-  // update the DOM with the new track
+  .then(newTrack=>onAddTrack(newTrack))
+  
 }
 console.log(formData);
   return (
