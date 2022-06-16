@@ -1,16 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Search from './Search'
 import AddTrackForm from './AddTrackForm'
 import TracksList from './TracksList'
 
 function TracksPage() {
+const [tracks, setTracks] = useState([]);
 
-    
+useEffect(()=> {
+  fetch("http://localhost:8001/tracks")
+  .then(r=>r.json())
+  .then(tracks=>setTracks(tracks))
+},[])
+    console.log(tracks)
   return (
     <div>
       <Search />
       <AddTrackForm />
-      <TracksList />
+      <TracksList tracks={tracks}/>
     </div>
   )
 }
