@@ -29,7 +29,7 @@ const handleSubmit = (e) => {
   .then(newTrack=>onAddTrack(newTrack))
   
 }
-console.log(formData);
+
   return (
       <form onSubmit = {handleSubmit}>
         <div>

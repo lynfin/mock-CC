@@ -5,6 +5,7 @@ import TracksList from './TracksList'
 
 function TracksPage() {
 const [tracks, setTracks] = useState([]);
+const [searchTerm, setSearchTerm] = useState("");
 
 useEffect(()=> {
   fetch("http://localhost:8001/tracks")
@@ -12,14 +13,18 @@ useEffect(()=> {
   .then(tracks=>setTracks(tracks))
 },[])
 
+const updateSearchTerm = (newSearch) => {
+  setSearchTerm(newSearch);
+}
+
 const handleAddTrack = (newTrack) => {
   setTracks([...tracks, newTrack]);
 }
-    console.log(tracks)
+    console.log('Search',searchTerm)
 
   return (
     <div>
-      <Search />
+      <Search onUpdateSearch={updateSearchTerm}/>
       <AddTrackForm onAddTrack={handleAddTrack}/>
       <TracksList tracks={tracks}/>
     </div>
