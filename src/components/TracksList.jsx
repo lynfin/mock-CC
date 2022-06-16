@@ -1,7 +1,11 @@
 import React from 'react'
 import Track from './Track'
 
-function TracksList({tracks}) {
+function TracksList({tracks, onNewSort}) {
+  const handleClick = (e) => {
+    console.log('Requested sort by', e.target.getAttribute('name'))
+    onNewSort(e.target.getAttribute('name'))
+  }
   return (
     <table>
       <tbody>
@@ -11,13 +15,13 @@ function TracksList({tracks}) {
 
           </th>
           <th>
-            <h3 className="row-title">Title</h3>
+            <h3 name="title" onClick={handleClick} className="row-title">Title</h3>
           </th>
           <th>
-            <h3 className="">Artist</h3>
+            <h3 name="artist" onClick={handleClick}  className="">Artist</h3>
           </th>
           <th>
-            <h3 className="">BPM</h3>
+            <h3 name="bpm" onClick={handleClick}  className="">BPM</h3>
           </th>
         </tr>
         {tracks.map(track=><Track track={track} key={track.id}/>)}

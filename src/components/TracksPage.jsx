@@ -6,6 +6,7 @@ import TracksList from './TracksList'
 function TracksPage() {
 const [tracks, setTracks] = useState([]);
 const [searchTerm, setSearchTerm] = useState("");
+const [sortType, setSortType] = useState("");
 
 
 useEffect(()=> {
@@ -18,20 +19,44 @@ useEffect(()=> {
 const updateSearchTerm = (newSearch) => {
   setSearchTerm(newSearch);
 }
+const updateSortType = (newSort) => {
+  setSortType(newSort);
+}
 
 const handleAddTrack = (newTrack) => {
   setTracks([...tracks, newTrack]);
 }
  
     
-const filteredTracks = tracks.filter(track=>track.title.includes(searchTerm) || track.artist.includes(searchTerm));
+const filteredTracks = tracks.filter(
+  track=>track.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+track.artist.toLowerCase().includes(searchTerm.toLowerCase()) || 
+track.BPM.toString().includes(searchTerm));
 
+
+if (sortType==="bpm") {
+filteredTracks.sort(function (a,b) {return a.BPM - b.BPM})
+} else if (sortType) {
+  filteredTracks.sort(function(a,b) {
+    const valA = a[sortType].toUpperCase();
+    const valB = b[sortType].toUpperCase();
+    if (valA < valB) {
+      return -1;
+    }
+    if (valA > valB) {
+      return 1;
+    }
+    return 0;
+  }
+
+  )
+}
 
   return (
     <div>
       <Search onUpdateSearch={updateSearchTerm} searchTerm={searchTerm}/>
       <AddTrackForm onAddTrack={handleAddTrack}/>
-      <TracksList tracks={filteredTracks}/>
+      <TracksList tracks={filteredTracks} onNewSort={updateSortType}/>
     </div>
   )
 }
